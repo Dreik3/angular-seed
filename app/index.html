@@ -9,16 +9,45 @@
   <title>My AngularJS App</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
   <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
-  <link rel="stylesheet" href="app.css">
+  <link rel="stylesheet" href="css/app.css">
   <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 
 
 
 </head>
 <body>
+
+<div class="optBox"ng-controller="optBoxCtrl">
+  <button ng-click="isBoxOpen = !isBoxOpen">Show options</button>
+  <div id="optionsBox" ng-show="isBoxOpen">
+    <div>
+    <h3>Which charts you want to see?</h3>
+            <label class="chartLable">Chart1:
+                <input type="checkbox" ng-model="checkboxModel.value1">
+            </label>
+            <label class="chartLable">Chart2:
+                <input type="checkbox" ng-model="checkboxModel.value2">
+            </label>
+            <label class="chartLable">Chart3:
+                <input type="checkbox" ng-model="checkboxModel.value3">
+            </label>
+            <label class="chartLable">Chart4:
+                <input type="checkbox" ng-model="checkboxModel.value4">
+            </label>
+            <!--<p>value1 = {{checkboxModel.value1}}</p>
+            <p>value2 = {{checkboxModel.value2}}</p><br/>-->
+
+
+    </div>
+  </div>
+</div>
 <charts-item></charts-item>
+
+<script src="libs/jquery.min.js"></script>
+<script src="libs/bootstrap.min.js"></script>
 <script src="bower_components/highcharts/highcharts.js"></script>
 <script src="bower_components/angular/angular.js"></script>
 <script src="bower_components/angular-route/angular-route.js"></script>
@@ -27,6 +56,7 @@
 <script src="app.js"></script>
 <script src="components/charts/charts.module.js"></script>
 <script src="components/charts/charts-item/charts-item.component.js"></script>
+<script src="components/optBox/optBoxCtrl.js"></script>
 
 </body>
 </html>

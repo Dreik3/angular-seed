@@ -26,6 +26,20 @@
 highchart {
   float: left;
   width: 40%;
-  margin-left: 30px;
+  margin-left: 150px;
   margin-top: 30px;
+}
+.optBox {
+    padding-top: 30px;
+    text-align: center;
+
+}
+#optionsBox {
+    border: 4px double black;
+    margin-left: 300px;
+    margin-right: 300px;
+    margin-top: 20px;
+}
+.chartLable {
+    padding-left: 20px;
 }
