@@ -20,28 +20,46 @@
 </head>
 <body>
 
-<div class="optBox"ng-controller="optBoxCtrl">
+<div class="optBox" ng-controller="optBoxCtrl">
   <button ng-click="isBoxOpen = !isBoxOpen">Show options</button>
   <div id="optionsBox" ng-show="isBoxOpen">
-    <div>
-    <h3>Which charts you want to see?</h3>
-            <label class="chartLable">Chart1:
-                <input type="checkbox" ng-model="checkboxModel.value1">
+      <div>
+          <div class="checkboxes">
+              <h3>Which charts you want to see?</h3>
+              <label class="chartLable">Chart1:
+                  <input type="checkbox" ng-model="chartConfig.chart1.value">
+              </label>
+              <label class="chartLable">Chart2:
+                  <input type="checkbox" ng-model="chartConfig.chart2.value">
+              </label>
+              <label class="chartLable">Chart3:
+                  <input type="checkbox" ng-model="chartConfig.chart3.value">
+              </label>
+              <label class="chartLable">Chart4:
+                  <input type="checkbox" ng-model="chartConfig.chart4.value">
+              </label>
+          </div>
+          <div class="dateInput">
+            <h3>Set the date period</h3>
+            <label>from:
+                <input type="date" id="fromDate"
+                       placeholder="yyyy-mm-dd" min="2018-03-01" max="2018-05-31" required />
             </label>
-            <label class="chartLable">Chart2:
-                <input type="checkbox" ng-model="checkboxModel.value2">
+            <label>to:
+                <input type="date" id="toDate"
+                       placeholder="yyyy-mm-dd" min="2018-03-01" max="2018-05-31" required />
             </label>
-            <label class="chartLable">Chart3:
-                <input type="checkbox" ng-model="checkboxModel.value3">
-            </label>
-            <label class="chartLable">Chart4:
-                <input type="checkbox" ng-model="checkboxModel.value4">
-            </label>
-            <!--<p>value1 = {{checkboxModel.value1}}</p>
-            <p>value2 = {{checkboxModel.value2}}</p><br/>-->
-
-
-    </div>
+          </div>
+          <div class="chartsType">
+              <h3>Select the type of charts:</h3>
+              <input type="radio" name="chartsType" ng-model="chartConfig.chart.type" value="line" ng-change="showBB(value)"> Line
+              <input type="radio" name="chartsType" ng-model="chartConfig.chart.type" value="bar" ng-change="showBB(value)"> Bar
+          </div>
+          <div class="colors">
+              <h3>Select the color of lines/bars</h3>
+              <input type="color" value="#4088ED">
+          </div>
+      </div>
   </div>
 </div>
 <charts-item></charts-item>
@@ -56,7 +74,7 @@
 <script src="app.js"></script>
 <script src="components/charts/charts.module.js"></script>
 <script src="components/charts/charts-item/charts-item.component.js"></script>
-<script src="components/optBox/optBoxCtrl.js"></script>
+
 
 </body>
 </html>
