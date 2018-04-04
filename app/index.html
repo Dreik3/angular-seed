@@ -50,6 +50,7 @@
                       <input type="radio" name="chartConfig.chart.name" ng-model="chart.chart.type" value="line" ng-change="showConfig(value)"> Line
                       <input type="radio" name="chartConfig.chart.name" ng-model="chart.chart.type" value="bar" ng-change="showConfig(value)"> Bar
                   </label>
+                  {{chart.chart.type}}
               </div>-->
               <input type="radio" name="chartConfig.chart.name" ng-model="chartType"
                      value="line" ng-change="changeType()" ng-checked="true"> Line
@@ -59,13 +60,13 @@
           <div class="colors">
               <h3>Select the color of series</h3>
               <div ng-repeat="col in colors" class="chartColors">
-                  <input type="color" ng-model="col" value="col" ng-value="col" ng-change="changeType()">
+                  <input type="color" ng-model="col" value="col" ng-value="col" ng-change="changeColor($event)">
               </div>
           </div>
       </div>
   </div>
 </div>
-<chart-item></chart-item>
+<chart-list></chart-list>
 
 <script src="libs/jquery.min.js"></script>
 <script src="libs/bootstrap.min.js"></script>

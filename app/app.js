@@ -11,23 +11,31 @@ myApp.controller('optBoxCtrl', function ($scope, storageForData) {
     $scope.colors = ['#FF0000', '#1900FF', '#11FF00'];
     $scope.timeToStart ='';
 
-    $scope.chartConfig = storageForData.getData();
     //convert time which user chosed as starting point to milliseconds
     $scope.parseTime = function(value) {
         $scope.timeToStart = Date.parse($scope.timeToStart);
-        console.log("test", $scope.timeToStart);
-        console.log("test", $scope.chartConfig[0].series[0].pointStart);
-        $scope.changeType();
+        $scope.changeTime();
     };
 
-    //after changing value of the radio checkboxes, color or start date, change the type of all charts to bar/line(color or start date)
+    //after changing value of the radio checkboxes, change the type of all charts to bar/line
     $scope.changeType = function () {
         for (let i = 0; i < $scope.chartConfig.length; i++) {
             $scope.chartConfig[i].chart.type = $scope.chartType;
+        }
+    };
+    //same func for changing colors( couldn't get colors from ng-model yet)
+    $scope.changeColor = function (valye) {
+        console.log(valye);
+        for (let i = 0; i < $scope.chartConfig.length; i++) {
             $scope.chartConfig[i].colors = $scope.colors;
+        }
+    };
+    //same func for changing start date
+    $scope.changeTime = function () {
+        for (let i = 0; i < $scope.chartConfig.length; i++) {
             $scope.chartConfig[i].series[0].pointStart = $scope.timeToStart;
         }
-    }
+    };
     console.log($scope.chartConfig);
 });
 //get random arrays for charts data - will be changed for some public api data later
@@ -56,12 +64,12 @@ function ChartConfig(id,type,title,visible=true) {
             pointStart: Math.round((new Date().getTime() / 1000) - (7 * 24 * 3600)) * 1000, //start week ago
             pointInterval: 24 * 3600 * 1000, // one day
             name: `series1`
-      /*  }, {
+        }, {
             data: getRndDataArr(),
             name: `series2`
         }, {
             data: getRndDataArr(),
-            name: `series3`*/
+            name: `series3`
         }
     ];
 }
@@ -82,5 +90,4 @@ myApp.factory('storageForData', function () {
 
         }
     }
-
 });
