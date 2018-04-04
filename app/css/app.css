@@ -1,5 +1,7 @@
 /* app css stylesheet */
-
+body {
+    background-color: #DFFBF5;
+}
 .menu {
   list-style: none;
   border-bottom: 0.1em solid black;
@@ -35,17 +37,23 @@ highchart {
 
 }
 #optionsBox {
+    background-color: #FFE0E0;
     border: 4px double black;
     margin-left: 300px;
     margin-right: 300px;
     margin-top: 20px;
 }
-.chartLable {
+.chartCheckbox {
     padding-left: 20px;
+    display: inline;
 }
 h3 {
     padding-top: 10px;
 }
 .colors {
     padding-bottom: 20px;
+}
+.chartColors {
+    padding-left: 20px;
+    display: inline;
 }

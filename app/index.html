@@ -26,18 +26,11 @@
       <div>
           <div class="checkboxes">
               <h3>Which charts you want to see?</h3>
-              <label class="chartLable">Chart1:
-                  <input type="checkbox" ng-model="chartConfig.chart1.value">
-              </label>
-              <label class="chartLable">Chart2:
-                  <input type="checkbox" ng-model="chartConfig.chart2.value">
-              </label>
-              <label class="chartLable">Chart3:
-                  <input type="checkbox" ng-model="chartConfig.chart3.value">
-              </label>
-              <label class="chartLable">Chart4:
-                  <input type="checkbox" ng-model="chartConfig.chart4.value">
-              </label>
+              <div ng-repeat="chart in chartConfig" class="chartCheckbox">
+                  <label>{{chart.title.text}}:
+                      <input type="checkbox" ng-model="chart.visible">
+                  </label>
+              </div>
           </div>
           <div class="dateInput">
             <h3>Set the date period</h3>
@@ -52,17 +45,27 @@
           </div>
           <div class="chartsType">
               <h3>Select the type of charts:</h3>
-              <input type="radio" name="chartsType" ng-model="chartConfig.chart.type" value="line" ng-change="showBB(value)"> Line
-              <input type="radio" name="chartsType" ng-model="chartConfig.chart.type" value="bar" ng-change="showBB(value)"> Bar
+              <!--<div ng-repeat="chart in chartConfig" class="chartType">
+                  <label>{{chart.title.text}}
+                      <input type="radio" name="chartConfig.chart.name" ng-model="chart.chart.type" value="line" ng-change="showConfig(value)"> Line
+                      <input type="radio" name="chartConfig.chart.name" ng-model="chart.chart.type" value="bar" ng-change="showConfig(value)"> Bar
+                  </label>
+              </div>-->
+              <input type="radio" name="chartConfig.chart.name" ng-model="chartType"
+                     value="line" ng-change="changeType(value)" ng-checked="true"> Line
+              <input type="radio" name="chartConfig.chart.name" ng-model="chartType"
+                     value="bar" ng-change="changeType(value)"> Bar
           </div>
           <div class="colors">
-              <h3>Select the color of lines/bars</h3>
-              <input type="color" value="#4088ED">
+              <h3>Select the color of series</h3>
+              <div ng-repeat="col in colors" class="chartColors">
+                  <input type="color" ng-model="col" value="col" ng-value="col" ng-change="foo(value)">
+              </div>
           </div>
       </div>
   </div>
 </div>
-<charts-item></charts-item>
+<chart-item></chart-item>
 
 <script src="libs/jquery.min.js"></script>
 <script src="libs/bootstrap.min.js"></script>
@@ -73,8 +76,8 @@
 
 <script src="app.js"></script>
 <script src="components/charts/charts.module.js"></script>
-<script src="components/charts/charts-item/charts-item.component.js"></script>
-
+<script src="components/charts/chart-list/chart-list.component.js"></script>
+<script src="components/charts/chart-item/chart-item.component.js"></script>
 
 </body>
 </html>

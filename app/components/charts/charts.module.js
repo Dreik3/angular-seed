@@ -1,5 +1,6 @@
 'use strict';
 
 angular.module('ntCharts', [
-    'ntCharts.charts-item',
+    'ntCharts.chart-item',
+    'ntCharts.chart-list'
 ]);
