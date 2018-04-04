@@ -9,23 +9,31 @@ myApp.controller('optBoxCtrl', function ($scope, storageForData) {
 
     $scope.chartType = '';
     $scope.colors = ['#FF0000', '#1900FF', '#11FF00'];
-    $scope.foo = function (color) {
-        console.log($scope.colors);
-    };
+    $scope.timeToStart ='';
+
     $scope.chartConfig = storageForData.getData();
-    //after changing value of the radio checkboxes, change the type of all charts to bar/line
+    //convert time which user chosed as starting point to milliseconds
+    $scope.parseTime = function(value) {
+        $scope.timeToStart = Date.parse($scope.timeToStart);
+        console.log("test", $scope.timeToStart);
+        console.log("test", $scope.chartConfig[0].series[0].pointStart);
+        $scope.changeType();
+    };
+
+    //after changing value of the radio checkboxes, color or start date, change the type of all charts to bar/line(color or start date)
     $scope.changeType = function () {
-        for (let i = 0; i < $scope.chartConfig.length - 1; i++) {
+        for (let i = 0; i < $scope.chartConfig.length; i++) {
             $scope.chartConfig[i].chart.type = $scope.chartType;
             $scope.chartConfig[i].colors = $scope.colors;
+            $scope.chartConfig[i].series[0].pointStart = $scope.timeToStart;
         }
     }
-/*    console.log($scope.chartConfig);*/
+    console.log($scope.chartConfig);
 });
 //get random arrays for charts data - will be changed for some public api data later
 function getRndDataArr() {
     let rndDataArr = [];
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 15; i++) {
         rndDataArr[i] = Math.floor((Math.random() * 100) + 1);
     }
     return rndDataArr;
@@ -39,16 +47,21 @@ function ChartConfig(id,type,title,visible=true) {
     this.id = id;
     this.visible = visible;
     this.title = {text: title};
+    this.xAxis = {
+        type: 'datetime',
+        dateTimeLabelFormats: {day: '%e of %b'}};
     this.colors = ['#FF0000', '#1900FF', '#11FF00'];
     this.series = [{
             data: getRndDataArr(),
+            pointStart: Math.round((new Date().getTime() / 1000) - (7 * 24 * 3600)) * 1000, //start week ago
+            pointInterval: 24 * 3600 * 1000, // one day
             name: `series1`
-        }, {
+      /*  }, {
             data: getRndDataArr(),
             name: `series2`
         }, {
             data: getRndDataArr(),
-            name: `series3`
+            name: `series3`*/
         }
     ];
 }

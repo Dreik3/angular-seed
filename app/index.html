@@ -34,14 +34,14 @@
           </div>
           <div class="dateInput">
             <h3>Set the date period</h3>
-            <label>from:
-                <input type="date" id="fromDate"
+            <label>Start from:
+                <input type="date" id="fromDate" ng-model="timeToStart" ng-change="parseTime(value)"
                        placeholder="yyyy-mm-dd" min="2018-03-01" max="2018-05-31" required />
             </label>
-            <label>to:
+            <!--<label>to:
                 <input type="date" id="toDate"
                        placeholder="yyyy-mm-dd" min="2018-03-01" max="2018-05-31" required />
-            </label>
+            </label>-->
           </div>
           <div class="chartsType">
               <h3>Select the type of charts:</h3>
@@ -52,14 +52,14 @@
                   </label>
               </div>-->
               <input type="radio" name="chartConfig.chart.name" ng-model="chartType"
-                     value="line" ng-change="changeType(value)" ng-checked="true"> Line
+                     value="line" ng-change="changeType()" ng-checked="true"> Line
               <input type="radio" name="chartConfig.chart.name" ng-model="chartType"
-                     value="bar" ng-change="changeType(value)"> Bar
+                     value="bar" ng-change="changeType()"> Bar
           </div>
           <div class="colors">
               <h3>Select the color of series</h3>
               <div ng-repeat="col in colors" class="chartColors">
-                  <input type="color" ng-model="col" value="col" ng-value="col" ng-change="foo(value)">
+                  <input type="color" ng-model="col" value="col" ng-value="col" ng-change="changeType()">
               </div>
           </div>
       </div>
