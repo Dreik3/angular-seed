@@ -50,6 +50,7 @@ function getRndDataArr() {
     return rndDataArr;
 }
 
+//sets the config for charts
 function ChartConfig(id,type,title,visible=true) {
     this.chart = {
         type: type,
