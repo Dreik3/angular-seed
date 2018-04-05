@@ -39,8 +39,9 @@ highchart {
 #optionsBox {
     background-color: #FFE0E0;
     border: 4px double black;
-    margin-left: 300px;
-    margin-right: 300px;
+
+    margin-left: 30%;
+    width: 40%;
     margin-top: 20px;
 }
 .chartCheckbox {

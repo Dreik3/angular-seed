@@ -19,9 +19,8 @@
 
 </head>
 <body>
-
 <div class="optBox" ng-controller="optBoxCtrl">
-  <button ng-click="isBoxOpen = !isBoxOpen">Show options</button>
+  <button class="btn btn-primary btn-lg" ng-click="isBoxOpen = !isBoxOpen">Show options</button>
   <div id="optionsBox" ng-show="isBoxOpen">
       <div>
           <div class="checkboxes">
@@ -52,15 +51,19 @@
                   </label>
                   {{chart.chart.type}}
               </div>-->
-              <input type="radio" name="chartConfig.chart.name" ng-model="chartType"
-                     value="line" ng-change="changeType()" ng-checked="true"> Line
-              <input type="radio" name="chartConfig.chart.name" ng-model="chartType"
-                     value="bar" ng-change="changeType()"> Bar
+              <label> Line
+                  <input type="radio" name="chartConfig.chart.name" ng-model="chartType"
+                         value="line" ng-change="changeType()" ng-checked="true">
+              </label>
+              <label> Bar
+                  <input type="radio" name="chartConfig.chart.name" ng-model="chartType"
+                         value="bar" ng-change="changeType()">
+              </label>
           </div>
           <div class="colors">
               <h3>Select the color of series</h3>
               <div ng-repeat="col in colors" class="chartColors">
-                  <input id="{{$index}}" type="color" ng-model="col" value="col" ng-value="col" ng-change="changeColor(col, $index)">
+                  <label for="{{$index}}"></label><input id="{{$index}}" type="color" ng-model="col" value="col" ng-value="col" ng-change="changeColor(col, $index)">
               </div>
           </div>
       </div>
