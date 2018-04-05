@@ -11,9 +11,4 @@ angular
 });
 
 function ChartsItemController($scope, storageForData/*$element, $attrs*/) {
-    let ctrl =this;
-    debugger;
-    console.log('HEY3');
-    console.log(ctrl.chart);
-
 }

@@ -10,22 +10,22 @@ myApp.controller('optBoxCtrl', function ($scope, storageForData) {
     $scope.chartType = '';
     $scope.colors = ['#FF0000', '#1900FF', '#11FF00'];
     $scope.timeToStart ='';
-
+    $scope.chartConfig = storageForData.getData();
     //convert time which user chosed as starting point to milliseconds
     $scope.parseTime = function(value) {
         $scope.timeToStart = Date.parse($scope.timeToStart);
         $scope.changeTime();
     };
-
+    console.log("hh",$scope.chartConfig);
     //after changing value of the radio checkboxes, change the type of all charts to bar/line
     $scope.changeType = function () {
         for (let i = 0; i < $scope.chartConfig.length; i++) {
             $scope.chartConfig[i].chart.type = $scope.chartType;
         }
     };
-    //same func for changing colors( couldn't get colors from ng-model yet)
-    $scope.changeColor = function (valye) {
-        console.log(valye);
+    //same func for changing colors
+    $scope.changeColor = function (value, id) {
+        $scope.colors[id] = value;
         for (let i = 0; i < $scope.chartConfig.length; i++) {
             $scope.chartConfig[i].colors = $scope.colors;
         }

@@ -60,7 +60,7 @@
           <div class="colors">
               <h3>Select the color of series</h3>
               <div ng-repeat="col in colors" class="chartColors">
-                  <input type="color" ng-model="col" value="col" ng-value="col" ng-change="changeColor($event)">
+                  <input id="{{$index}}" type="color" ng-model="col" value="col" ng-value="col" ng-change="changeColor(col, $index)">
               </div>
           </div>
       </div>
